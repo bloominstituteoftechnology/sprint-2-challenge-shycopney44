@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+.<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,27 +6,86 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
-    }
+      if (profile.active) {
+        if (reason) {
+          return { active: false, reason};
+        } else {
+          return "confirm status manually";
+        } 
+      }else {
+        delete profile.reason;
+        return { active: true };
+        }
+      }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates";
+      }
+      const cellValue = grid[y - 1][x - 1];
+      
+      if (cellValue === "🟥") {
+        return "🟥 💀";
+      } else if (cellValue === "🟦") {
+        return "🟦 🥳";
+      }
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      const result = {};
 
+      for (const prop in obj) {
+        const value = obj[prop];
+
+        if (value === 0) {
+          result[prop] = false;
+        } else if (value === 1) {
+          result[prop] = true;
+        } else if (value !== null) {
+          result[prop] = value;
+        }
+      }
+
+      for (const prop in result) {
+        if (prop.length > 9) {
+          return "shorten all prop names to 9 chars or less";
+        }
+      }
+
+      return result;
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (!text || forbidden.length === 0) {
+        return text;
+      }
 
+      const words = text.split(/\s+/);
+
+      const scrubbedWords = words.map(word => {
+        const lowerWord = word.toLowerCase();
+        if (forbidden.includes(lowerWord)) {
+          return 'x'.repeat(word.length);
+        }
+        return word;
+      });
+
+      return scrubbedWords.join(' ');
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+      const cleanedNum = num.replace(/\D/g, '');
 
+      if (cleanedNum.length !== 10) {
+        throw new Error("Invalid phone number. Please provide a 10-digit number.");
+      }
+
+      const formattedNum = `(${cleanedNum.slice(0, 3)}) ${cleanedNum.slice(3, 6)}-${cleanedNum.slice(6)}`;
+      return formattedNum;
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)

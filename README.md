@@ -11,7 +11,7 @@ Below you will find step-by-step instructions to help you get setup and complete
 To get started, clone the repository to your local machine. Cloning creates a local copy of the project on your computer. To clone your repository, open your terminal or Git BASH and execute:
 
 ```
-git clone [your-repo-url-here]
+git clone [your-f.-url-here]
 ```
 
 You can get your repo url from GitHub by clicking on the green "<> Code" button and clicking on the copy button for the url.
